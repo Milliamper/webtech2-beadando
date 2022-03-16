@@ -1,0 +1,98 @@
+<mat-card>
+    <mat-card-title align="center">Termék módosítása</mat-card-title>
+</mat-card>
+
+<form [formGroup]="carFormGroup" align="center" style="margin: 5%;">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Márka</mat-label>
+            <mat-select formControlName="brand">
+                <mat-option value="Alfa Romeo">Alfa Romeo</mat-option>
+                <mat-option value="Aston Martin">Aston Martin</mat-option>
+                <mat-option value="Audi">Audi</mat-option>
+                <mat-option value="BMW">BMW</mat-option>
+                <mat-option value="Cadillac">Cadillac</mat-option>
+                <mat-option value="Chevrolet">Chevrolet</mat-option>
+                <mat-option value="Citroen">Citroen</mat-option>
+                <mat-option value="Dacia">Dacia</mat-option>
+                <mat-option value="Daewoo">Daewoo</mat-option>
+                <mat-option value="Ferrari">Ferrari</mat-option>
+                <mat-option value="Fiat">Fiat</mat-option>
+                <mat-option value="Ford">Ford</mat-option>
+                <mat-option value="Hummer">Hummer</mat-option>
+                <mat-option value="Hyundai">Hyundai</mat-option>
+                <mat-option value="Jeep">Jeep</mat-option>
+                <mat-option value="Kia">Kia</mat-option>
+                <mat-option value="Lamborghini">Lamborghini</mat-option>
+                <mat-option value="Land Rover">Land Rover</mat-option>
+                <mat-option value="Lexus">Lexus</mat-option>
+                <mat-option value="Mazda">Mazda</mat-option>
+                <mat-option value="Mercedes-Benz">Mercedes-Benz</mat-option>
+                <mat-option value="Mini">Mini</mat-option>
+                <mat-option value="Opel">Opel</mat-option>
+                <mat-option value="Peugeot">Peugeot</mat-option>
+                <mat-option value="Porsche">Porsche</mat-option>
+                <mat-option value="Renault">Renault</mat-option>
+                <mat-option value="Rolls Royce">Rolls Royce</mat-option>
+                <mat-option value="Saab">Saab</mat-option>
+                <mat-option value="Seat">Seat</mat-option>
+                <mat-option value="Skoda">Skoda</mat-option>
+                <mat-option value="Smart">Smart</mat-option>
+                <mat-option value="Subaru">Subaru</mat-option>
+                <mat-option value="Suzuki">Suzuki</mat-option>
+                <mat-option value="Tesla">Tesla</mat-option>
+                <mat-option value="Toyota">Toyota</mat-option>
+                <mat-option value="Volkswagen">Volkswagen</mat-option>
+                <mat-option value="Volvo">Volvo</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="carFormGroup.controls.brand.touched === true">
+            <mat-error *ngIf="carFormGroup.controls.brand.hasError('required')">
+                A mező kitöltése kötelező!
+            </mat-error>
+            <mat-error *ngIf="carFormGroup.controls.brand.hasError('maxlength')">
+                Túllépte a korlátot! A megadott input maximum 20 karakter lehet!
+            </mat-error>
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Típus</mat-label>
+            <input type="text" matInput formControlName="type">
+        </mat-form-field>
+        <div *ngIf="carFormGroup.controls.type.touched === true">
+            <mat-error *ngIf="carFormGroup.controls.type.hasError('required')">
+                A mező kitöltése kötelező!
+            </mat-error>
+            <mat-error *ngIf="carFormGroup.controls.type.hasError('maxlength')">
+                Túllépte a korlátot! A megadott input maximum 20 karakter lehet!
+            </mat-error>
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Megtett kilométerek száma</mat-label>
+            <input type="number" matInput formControlName="distance">
+        </mat-form-field>
+        <div *ngIf="carFormGroup.controls.distance.touched === true">
+            <mat-error *ngIf="carFormGroup.controls.distance.hasError('required')">
+                A mező kitöltése kötelező!
+            </mat-error>
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Ár</mat-label>
+            <input type="number" matInput formControlName="price">
+        </mat-form-field>
+        <div *ngIf="carFormGroup.controls.price.touched === true">
+            <mat-error *ngIf="carFormGroup.controls.price.hasError('required')">
+                A mező kitöltése kötelező
+            </mat-error>
+        </div>
+    </div>
+    <div>
+        <button routerLink="/settings/car" mat-raised-button matDialogClose>Vissza</button>
+        <button color="primary" [disabled]="!carFormGroup.valid" (click)="editCar()" mat-raised-button matDialogClose>Módosítás</button>
+    </div>
+</form>
